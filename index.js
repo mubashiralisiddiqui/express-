@@ -1,33 +1,40 @@
 
-var express=require ("express");
+var express = require("express");
 var mongoose = require("mongoose")
 
 var app = express();
 var a = (process.env.PORT || 3000)
 
 
-///shema and modal  of database////
+
+
+
+
+
 
 var studentSchema = new mongoose.Schema({
     name: String
 });
-var studentModel = mongoose.model("student",studentSchema);
+var studentModel = mongoose.model("student", studentSchema);
 //Schema and model of database//
 
 
-app.get("/add", function(req,res,next){
+app.post("/add", function (req, res, next) {
 
     var newstudent = new studentModel({
         name: "ali"
     })
-   newstudent.save(function(err,data){
-       if(!err){
-           res.send("saved")
-       }
-       else{
-           res.send("error")
-       }
-   })
+
+
+
+    newstudent.save(function (err, data) {
+        if (!err) {
+            res.send("saved")
+        }
+        else {
+            res.send("error")
+        }
+    })
 
 })
 
@@ -44,7 +51,7 @@ app.get("/add", function(req,res,next){
 // })
 
 
-app.listen(a,function(){
+app.listen(a, function () {
     console.log(" your  app is running")
 })
 mongoose.connect('mongodb://ali:123@ds117919.mlab.com:17919/mongoose');
