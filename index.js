@@ -1,9 +1,9 @@
 
-var a = (process.env.PORT || 3000)
 var express=require ("express");
-
+var mongoose = require("mongoose")
 
 var app = express();
+var a = (process.env.PORT || 3000)
 
 app.get("/", function(req,res,next){
     res.send("hello world")
