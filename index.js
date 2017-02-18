@@ -19,6 +19,8 @@ var studentModel = mongoose.model("student", studentSchema);
 //Schema and model of database//
 
 
+
+
 app.post("/add", function (req, res, next) {
 
     var newstudent = new studentModel({
@@ -43,9 +45,24 @@ app.post("/add", function (req, res, next) {
 
 
 
-// app.get("/express", function(req,res,next){
-//     res.send("hello express")
-// })
+app.get("/userlist", function (req, res, next) {
+
+    studentModel.find({}, function (err, data) {
+        if (!err) {
+            console.log(">>>> " + data);
+            res.send( data)
+        }
+        else {
+            console.log("error")
+            res.send("error")
+        }
+
+    });
+
+
+
+    
+})
 // app.get("/port", function(req,res,next){
 //     res.send("hello port"+a)
 // })
