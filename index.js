@@ -19,4 +19,8 @@ app.get("/port", function(req,res,next){
 app.listen(a,function(){
     console.log(" your  app is running")
 })
+mongoose.connect('mongodb://ali:123@ds117919.mlab.com:17919/mongoose');
 
+mongoose.connection.on('connected', function () {
+    console.log("Mongoose is connected");
+});
