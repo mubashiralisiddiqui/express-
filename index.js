@@ -1,11 +1,13 @@
 
 var express = require("express");
 var mongoose = require("mongoose")
+var bodyParser = require("body-parser");
+
 
 var app = express();
+
+app.use(bodyParser.json())
 var a = (process.env.PORT || 3000)
-
-
 
 
 
@@ -24,7 +26,7 @@ var studentModel = mongoose.model("student", studentSchema);
 app.post("/add", function (req, res, next) {
 
     var newstudent = new studentModel({
-        name: "ali"
+        name: req.body.send
     })
 
 
@@ -50,7 +52,7 @@ app.get("/userlist", function (req, res, next) {
     studentModel.find({}, function (err, data) {
         if (!err) {
             console.log(">>>> " + data);
-            res.send( data)
+            res.send(data)
         }
         else {
             console.log("error")
@@ -61,7 +63,7 @@ app.get("/userlist", function (req, res, next) {
 
 
 
-    
+
 })
 // app.get("/port", function(req,res,next){
 //     res.send("hello port"+a)
