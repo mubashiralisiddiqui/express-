@@ -44,9 +44,6 @@ app.post("/add", function (req, res, next) {
 
 
 
-
-
-
 app.get("/userlist", function (req, res, next) {
 
     studentModel.find({}, function (err, data) {
@@ -65,9 +62,9 @@ app.get("/userlist", function (req, res, next) {
 
 
 })
-// app.get("/port", function(req,res,next){
-//     res.send("hello port"+a)
-// })
+app.get("/port", function(req,res,next){
+    res.send("hello port"+a)
+})
 
 
 app.listen(a, function () {
