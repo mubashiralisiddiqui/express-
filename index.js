@@ -24,7 +24,7 @@ var studentModel = mongoose.model("student", studentSchema);
 
 
 app.post("/user", function (req, res, next) {
-
+   console.log(req.body)
     var newstudent = new studentModel({
         name: req.body.name
     })
